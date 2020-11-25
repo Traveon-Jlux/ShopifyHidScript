@@ -1,0 +1,27 @@
+<!-----Hide Script----->
+{% section 'product-template' %}
+
+{% if product.options.size <= 16 %}
+  <script>
+    var product_variants_removed = [
+      {%- for variant in product.variants -%}
+        {%- unless variant.available <= 16-%}
+          `{{ variant.title }}`,
+        {%- endunless -%}
+      {%- endfor -%}
+    ];
+  </script>
+{% endif %}
+
+<!-- {% if product.options.colour <= 16 %}
+  <script>
+    var product_variants_removed = [
+      {%- for variant in product.variants -%}
+        {%- unless variant.available -%}
+          `{{ variant.title }}`,
+        {%- endunless -%}
+      {%- endfor -%}
+    ];
+  </script>
+{% endif %} -->
+<!---Script End--->
